@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Param } from '@nestjs/common';
+import { UsersService } from './common/users/users.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly usersService: UsersService
+  ) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('/user/balance/:name')
+  async getUSerTotalBalance(
+    @Param('name') name: string
+  ): Promise<number> {
+    return this.usersService.getUserTotalBalance(name);
   }
 }

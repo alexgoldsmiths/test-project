@@ -2,6 +2,6 @@ export interface Account {
     id: number;
     userId: number;
     name: string;
-    currancy: string;
+    currency: string;
     balance: number;
 }
